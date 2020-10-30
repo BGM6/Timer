@@ -1,5 +1,5 @@
-//create a class
-//will have a start method, pause method, onDurationChange, tick method
+//Create a class
+//Will have a start method, pause method, onDurationChange, tick method
 
 class Timer {
   constructor(durationInput, startButton, pauseButton) {
@@ -24,9 +24,22 @@ class Timer {
   };
 
   tick = () => {
-    const timeRemaining = parseFloat(this.durationInput.value);
-    this.durationInput.value = timeRemaining - 1;
+    // const timeRemaining = this.timeRemaining;
+    // this.timeRemaining = timeRemaining - 1;
+    if (this.timeRemaining <= 0) {
+      this.pause();
+    } else {
+      this.timeRemaining = this.timeRemaining - 1;
+    }
   };
+
+  get timeRemaining() {
+    return parseFloat(this.durationInput.value);
+  }
+
+  set timeRemaining(time) {
+    this.durationInput.value = time;
+  }
 }
 
 const durationInput = document.querySelector('#duration');
